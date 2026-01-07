@@ -40,8 +40,8 @@ export default function RootLayout() {
  
   useEffect(() => {
     if (fontsLoaded) {
-      const timer1 = setTimeout(() => setCurrentSplash(2), 2500); // Splash 1 → Splash 2
-      const timer2 = setTimeout(() => setCurrentSplash(0), 5000); // Splash 2 → App
+      const timer1 = setTimeout(() => setCurrentSplash(2), 4500); // Splash 1 → Splash 2
+      const timer2 = setTimeout(() => setCurrentSplash(0), 7000); // Splash 2 → App
 
       return () => {
         clearTimeout(timer1);

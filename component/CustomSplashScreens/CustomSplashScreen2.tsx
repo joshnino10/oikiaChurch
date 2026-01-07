@@ -4,17 +4,14 @@ import React from 'react'
 export default function CustomSplashScreen2() {
   return (
     <View style={styles.container}>
-      {/* Status bar */}
       <StatusBar barStyle='dark-content' backgroundColor='white' translucent={false} />
-
-      {/* Logo */}
+      
       <Image
         style={styles.logo}
         source={require('../../assets/images/churchlogo.png')}
         resizeMode="contain"
       />
 
-      {/* Header Text */}
       <View style={styles.headerContainer}>
         <Text style={styles.title}>OIKIA</Text>
         <View>

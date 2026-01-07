@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, Image, StyleSheet, StatusBar } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-// If you're using Poppins, make sure fonts are loaded before rendering this component
 export default function CustomSplashScreen1() {
   return (
     <>
@@ -17,15 +16,17 @@ export default function CustomSplashScreen1() {
         end={{ x: 1, y: 1 }}
         style={styles.background}
       >
+        {/* Logo */}
         <Image
           source={require("../../assets/images/churchlogo.png")}
           style={styles.logo}
           resizeMode="contain"
         />
 
+        {/* Header Text */}
         <View style={styles.headerContainer}>
           <Text style={styles.title}>OIKIA</Text>
-          <View>
+          <View style={{ marginLeft: 0 }}>
             <Text style={styles.title2}>CHRISTIAN</Text>
             <Text style={styles.title2}>CENTRE</Text>
           </View>
@@ -40,30 +41,30 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: 24,
+    paddingHorizontal: 24,
   },
+
   logo: {
     width: 180,
     height: 180,
-    marginBottom: 24,
+    marginBottom: 30, // better spacing
   },
+
   headerContainer: {
-    marginTop: 20,
-    alignSelf: "center",
     flexDirection: "row",
-    gap: 7,
     alignItems: "center",
   },
 
   title: {
     fontSize: 40,
+    fontFamily: "PoppinsSemiBold",
     color: "#FFFFFF",
-    fontWeight: "bold",
   },
 
   title2: {
     fontSize: 18,
+    fontFamily: "PoppinsSemiBold",
     color: "#FFFFFF",
-    lineHeight: 17,
+    lineHeight: 22, // better readability
   },
 });
