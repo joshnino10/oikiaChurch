@@ -10,31 +10,59 @@ import {
   Poppins_900Black,
   useFonts
 } from "@expo-google-fonts/poppins";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
 
-SplashScreen.preventAutoHideAsync();
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect, useState } from "react";
+import CustomSplashScreen1 from "@/component/CustomSplashScreens/CustomSplashScreen1";
+import CustomSplashScreen2 from "@/component/CustomSplashScreens/CustomSplashScreen2";
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts({
+  const [currentSplash, setCurrentSplash] = useState(1);
+
+  const [fontsLoaded] = useFonts({
     PoppinsThin: Poppins_100Thin,
-    PoppinsRegular: Poppins_400Regular,
     PoppinsLight: Poppins_300Light,
+    PoppinsRegular: Poppins_400Regular,
     PoppinsMedium: Poppins_500Medium,
     PoppinsSemiBold: Poppins_600SemiBold,
     PoppinsBold: Poppins_700Bold,
     PoppinsExtraBold: Poppins_800ExtraBold,
-    PoppinsBlack: Poppins_900Black
+    PoppinsBlack: Poppins_900Black,
   });
 
+  // Keep the splash visible until we control it
   useEffect(() => {
-    if(loaded || error) {
-      SplashScreen.preventAutoHideAsync()
+    (async () => {
+      await SplashScreen.preventAutoHideAsync();
+    })();
+  }, []);
+
+  // Sequence the custom splash screens
+  useEffect(() => {
+    if (fontsLoaded) {
+      const timer1 = setTimeout(() => setCurrentSplash(2), 2500); // Splash 1 → Splash 2
+      const timer2 = setTimeout(() => setCurrentSplash(0), 5000); // Splash 2 → App
+
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+      };
     }
-  }, [loaded, error])
+  }, [fontsLoaded]);
 
+  // Hide the default splash only after custom splash ends
+  useEffect(() => {
+    if (currentSplash === 0) {
+      SplashScreen.hideAsync();
+    }
+  }, [currentSplash]);
 
+  // Show custom splash screens
+  if (!fontsLoaded) return null;
+  if (currentSplash === 1) return <CustomSplashScreen1 />;
+  if (currentSplash === 2) return <CustomSplashScreen2 />;
 
+  // Show main app
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />
