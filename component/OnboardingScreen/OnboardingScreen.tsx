@@ -14,7 +14,7 @@ import {
 const { width } = Dimensions.get('window');
 
 export default function OnboardingScreen() {
-  const router = useRouter()
+  const router = useRouter();
   const flatListRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -55,9 +55,7 @@ export default function OnboardingScreen() {
     }
   });
 
-  const viewConfigRef = useRef({
-    viewAreaCoveragePercentThreshold: 50,
-  });
+  const viewConfigRef = useRef({ viewAreaCoveragePercentThreshold: 50 });
 
   const goNext = () => {
     if (currentIndex < Slides.length - 1) {
@@ -78,15 +76,21 @@ export default function OnboardingScreen() {
   };
 
   const skip = () => {
-    router.replace('/(auth)/login')
-  }
+    flatListRef.current?.scrollToIndex({
+      index: Slides.length - 1,
+      animated: true,
+    });
+  };
+
+  const handleGetStarted = () => {
+    router.replace('/(auth)/login');
+  };
 
   const renderItem = ({ item }) => (
     <View style={styles.slideContainer}>
       <View style={styles.imageContainer}>
         <Image source={item.image} style={styles.image} />
       </View>
-
       <Text style={styles.slideTitle}>{item.title}</Text>
       <Text style={styles.slideSubtitle}>{item.subtitle}</Text>
     </View>
@@ -141,13 +145,17 @@ export default function OnboardingScreen() {
           </TouchableOpacity>
         )}
 
-        {/* Right button: Next arrow (hidden on last slide) */}
-        {currentIndex < Slides.length - 1 && (
+        {/* Right button: Next arrow or Get Started */}
+        {currentIndex < Slides.length - 1 ? (
           <TouchableOpacity style={styles.nextBtn} onPress={goNext}>
             <Image
               source={require('../../assets/images/nexticon.png')}
               style={styles.nextIcon}
             />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity style={styles.getStartedBtn} onPress={handleGetStarted}>
+            <Text style={styles.getStartedText}>Get Started</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -272,5 +280,18 @@ const styles = StyleSheet.create({
   nextIcon: {
     width: 11,
     height: 19,
+  },
+
+  getStartedBtn: {
+    backgroundColor: '#8C4616',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 25,
+  },
+
+  getStartedText: {
+    color: '#fff',
+    fontSize: 16,
+    fontFamily: 'PoppinsSemiBold',
   },
 });
