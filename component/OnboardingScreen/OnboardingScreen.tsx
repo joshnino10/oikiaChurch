@@ -83,7 +83,7 @@ export default function OnboardingScreen() {
   };
 
   const handleGetStarted = () => {
-    router.replace('/(auth)/login');
+    router.replace('/(auth)/welcomeSplash');
   };
 
   const renderItem = ({ item }) => (
