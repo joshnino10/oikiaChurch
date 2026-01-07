@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, StatusBar } from "react-native";
+import { View, StyleSheet, StatusBar } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Animated, { FadeIn, FadeInLeft, FadeInRight } from "react-native-reanimated"; 
 
