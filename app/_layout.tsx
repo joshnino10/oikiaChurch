@@ -8,6 +8,8 @@ import {
   Poppins_700Bold,
   Poppins_800ExtraBold,
   Poppins_900Black,
+  Poppins_500Medium_Italic,
+ 
   useFonts
 } from "@expo-google-fonts/poppins";
 
@@ -28,6 +30,8 @@ export default function RootLayout() {
     PoppinsBold: Poppins_700Bold,
     PoppinsExtraBold: Poppins_800ExtraBold,
     PoppinsBlack: Poppins_900Black,
+    PoppinsItalic: Poppins_500Medium_Italic
+   
   });
 
   
