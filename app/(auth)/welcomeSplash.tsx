@@ -45,9 +45,7 @@ export default function WelcomeSplash() {
         />
 
         <Text style={styles.title}>Welcome to Church</Text>
-        <Text style={styles.subtitle}>
-          
-        </Text>
+       
       </Animated.View>
     </View>
   );
@@ -73,16 +71,12 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 26,
+    fontSize: 24,
     color: '#fff',
+    fontWeight:'600',
     fontFamily: 'PoppinsSemiBold',
-    marginBottom: 8,
+    marginBottom:5,
   },
 
-  subtitle: {
-    fontSize: 14,
-    color: '#E5E5E5',
-    textAlign: 'center',
-    fontFamily: 'PoppinsRegular',
-  },
+
 });
