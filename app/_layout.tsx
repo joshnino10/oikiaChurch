@@ -10,9 +10,13 @@ import {
   Poppins_900Black,
   useFonts
 } from "@expo-google-fonts/poppins";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from "react";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [looaded, error] = useFonts({
+  const [loaded, error] = useFonts({
     PoppinsThin: Poppins_100Thin,
     PoppinsRegular: Poppins_400Regular,
     PoppinsLight: Poppins_300Light,
@@ -21,10 +25,16 @@ export default function RootLayout() {
     PoppinsBold: Poppins_700Bold,
     PoppinsExtraBold: Poppins_800ExtraBold,
     PoppinsBlack: Poppins_900Black
-  })
+  });
+
+  useEffect(() => {
+    if(loaded || error) {
+      SplashScreen.preventAutoHideAsync()
+    }
+  }, [loaded, error])
 
 
-  
+
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />
