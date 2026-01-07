@@ -78,7 +78,7 @@ export default function OnboardingScreen() {
   };
 
   const skip = () => {
-    // router.replace()
+    router.replace('/(auth)/login')
   }
 
   const renderItem = ({ item }) => (
