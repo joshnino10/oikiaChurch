@@ -96,7 +96,8 @@ export default function Login() {
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
       console.log("Login attempt:", { email: trimmedEmail });
-      Alert.alert("Success", "Login successful! (Demo mode)");
+      Alert.alert("Success", "Login successful!");
+      router.replace('/(tabs)/home')
 
       // TODO: Navigate to home screen after successful login
       // navigation.replace('Home');
