@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, StatusBar } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import Animated, { FadeIn, FadeInLeft, FadeInRight } from "react-native-reanimated"; 
 
 export default function CustomSplashScreen1() {
   return (
@@ -17,20 +18,21 @@ export default function CustomSplashScreen1() {
         style={styles.background}
       >
         {/* Logo */}
-        <Image
+        <Animated.Image
+         entering={FadeIn.delay(1000).springify()}
           source={require("../../assets/images/churchlogo.png")}
           style={styles.logo}
           resizeMode="contain"
         />
 
-        {/* Header Text */}
-        <View style={styles.headerContainer}>
-          <Text style={styles.title}>OIKIA</Text>
+        
+        <Animated.View style={styles.headerContainer} entering={FadeIn}>
+          <Animated.Text entering={FadeInLeft.delay(700)} style={styles.title}>OIKIA</Animated.Text>
           <View style={{ marginLeft: 0 }}>
-            <Text style={styles.title2}>CHRISTIAN</Text>
-            <Text style={styles.title2}>CENTRE</Text>
+            <Animated.Text entering={FadeInRight.delay(100)} style={styles.title2}>CHRISTIAN</Animated.Text>
+            <Animated.Text entering={FadeInRight.delay(100)}  style={styles.title2}>CENTRE</Animated.Text>
           </View>
-        </View>
+        </Animated.View>
       </LinearGradient>
     </>
   );
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 180,
     height: 180,
-    marginBottom: 30, // better spacing
+    marginBottom: 30,
   },
 
   headerContainer: {
@@ -65,6 +67,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: "PoppinsSemiBold",
     color: "#FFFFFF",
-    lineHeight: 22, // better readability
+    lineHeight: 22,
   },
 });
