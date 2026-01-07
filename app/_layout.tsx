@@ -30,14 +30,14 @@ export default function RootLayout() {
     PoppinsBlack: Poppins_900Black,
   });
 
-  // Keep the splash visible until we control it
+  
   useEffect(() => {
     (async () => {
       await SplashScreen.preventAutoHideAsync();
     })();
   }, []);
 
-  // Sequence the custom splash screens
+ 
   useEffect(() => {
     if (fontsLoaded) {
       const timer1 = setTimeout(() => setCurrentSplash(2), 2500); // Splash 1 → Splash 2
@@ -50,7 +50,7 @@ export default function RootLayout() {
     }
   }, [fontsLoaded]);
 
-  // Hide the default splash only after custom splash ends
+ 
   useEffect(() => {
     if (currentSplash === 0) {
       SplashScreen.hideAsync();
