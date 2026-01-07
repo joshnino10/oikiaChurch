@@ -1,9 +1,10 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StatusBar, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
 export default function CustomSplashScreen2() {
   return (
     <View style={styles.content}> 
+     <StatusBar barStyle='dark-content' backgroundColor='white' />
     <Image style={styles.icon} source={require('../../assets/images/churchlogo.png')}/>
       
        <View style={styles.headerContainer}>
