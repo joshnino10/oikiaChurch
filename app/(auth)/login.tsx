@@ -1,9 +1,10 @@
-import { View, StyleSheet, Image, Text} from 'react-native';
+import { View, StyleSheet, Image, Text, StatusBar} from 'react-native';
 import React from 'react';
 
 export default function Login() {
   return (
     <View style={styles.container}>
+        <StatusBar barStyle='light-content' backgroundColor="#261306" />
       <View style={styles.headercontent}>
         <Image style={styles.icon} source={require('../../assets/images/churchlogo.png')}/>
 
@@ -18,7 +19,16 @@ export default function Login() {
 
       </View>
 
-      <View style={styles.loginDetails}></View>
+      <View style={styles.loginDetails}>
+        <View style={styles.contentContainer}>
+            <View>
+                <Text style={styles.welcomeText}>Welcome Back</Text>
+                <Text style={styles.descText}>Sign in to continue your faith journey</Text>
+            </View>
+
+
+        </View>
+      </View>
     </View>
   );
 }
@@ -72,7 +82,23 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopLeftRadius: 40,  // only top corners
     borderTopRightRadius: 40,
-    overflow: 'hidden',        // ensures content respects radius
-    marginTop: -33,            // slight overlap for a modern look
+    overflow: 'hidden',        
+    marginTop: -35,            
   },
+
+  contentContainer:{
+    paddingHorizontal:16,
+    paddingVertical:20
+  },
+
+  welcomeText:{
+    fontFamily:'PoppinsSemiBold',
+    fontSize:20
+  },
+  descText:{
+    fontFamily: 'Poppinsregular',
+    color: '#000000',
+    fontSize:14
+
+  }
 });
