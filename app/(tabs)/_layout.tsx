@@ -4,7 +4,11 @@ import { Tabs } from 'expo-router'
 
 export default function Tablayout() {
   return (
-    <Tabs>
+    <Tabs screenOptions={{headerShown:false}}>
+
+
+
+        
      <Tabs.Screen name='home' />
      <Tabs.Screen name='sermon' />
      <Tabs.Screen name='giving' />
