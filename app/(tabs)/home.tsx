@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     
     Safearea:{
         flex:1,
+       
         
     }
 
