@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
 import React from "react";
-import { Image, Platform } from "react-native";
+import { Image, Platform, StyleSheet } from "react-native";
 import { BlurView } from 'expo-blur';
 
 export default function Tablayout() {
@@ -10,38 +10,32 @@ export default function Tablayout() {
         headerShown: false,
         tabBarStyle: {
           position: 'absolute',
-          backgroundColor: '#8C461626',
-          borderTopWidth: 0,
-          elevation: 8,
-          height: Platform.OS ==='ios'? 80:70,
-          paddingTop:3,
-          paddingHorizontal:16,
-          borderTopRightRadius:20,
-          borderTopLeftRadius:20,
-          overflow: "hidden",
-          borderWidth:0,         
-        
+          backgroundColor: '#8C461626',   
+          height: Platform.OS === 'ios' ? 80 : 60,
+          paddingBottom: Platform.OS === 'ios' ? 20 : 8,
+          paddingTop: 4,
+          paddingHorizontal: 20,
+          borderTopRightRadius: 20,
+          borderTopLeftRadius: 20,
+          overflow: Platform.OS === 'android' ? 'hidden' : 'visible',
+          borderWidth: 0,         
         },
         tabBarBackground: () => (
-          (
-            <BlurView 
-              intensity={15} 
-              tint="light"
-              style={{
-                flex:1,
-                borderRadius:25,
-                overflow:'hidden',
-                position: 'absolute',
-               
-              }}
-            />
-          )
+          <BlurView 
+            intensity={Platform.OS === 'ios' ? 20 : 0} 
+            tint={Platform.OS === 'ios' ? 'light' : 'default'}
+            experimentalBlurMethod={Platform.OS === 'android' ? 'dimezisBlurView' : undefined}
+            style={styles.blurView}
+          />
         ),
         tabBarActiveTintColor: '#8C4616',
         tabBarInactiveTintColor: '#999999',
         tabBarLabelStyle: {
           fontSize: 11,
           fontFamily: 'PoppinsSemiBold',
+          marginTop: 2,
+        },
+        tabBarIconStyle: {
           marginTop: 4,
         },
       }}
@@ -57,7 +51,8 @@ export default function Tablayout() {
                   ? require("../../assets/images/home active icon.png")
                   : require("../../assets/images/inactive home.png")
               }
-              style={{ width: 24, height: 24 }} 
+              style={styles.tabIcon}
+              resizeMode="contain"
             />
           ),
         }}
@@ -74,7 +69,8 @@ export default function Tablayout() {
                   ? require("../../assets/images/sermon active icon.png")
                   : require("../../assets/images/sermon inactive icon.png")
               }
-              style={{ width: 24, height: 24 }} 
+              style={styles.tabIcon}
+              resizeMode="contain"
             />
           ),
         }}
@@ -91,7 +87,8 @@ export default function Tablayout() {
                   ? require("../../assets/images/giving active icon.png")
                   : require("../../assets/images/giving inactive icon.png")
               }
-              style={{ width: 24, height: 24 }} 
+              style={styles.tabIcon}
+              resizeMode="contain"
             />
           ),
         }}
@@ -108,7 +105,8 @@ export default function Tablayout() {
                   ? require("../../assets/images/note active icon.png")
                   : require("../../assets/images/note inactive icon.png")
               }
-              style={{ width: 24, height: 24 }} 
+              style={styles.tabIcon}
+              resizeMode="contain"
             />
           ),
         }}
@@ -125,7 +123,8 @@ export default function Tablayout() {
                   ? require("../../assets/images/profile active icon.png")
                   : require("../../assets/images/profile inactive icon.png")
               }
-              style={{ width: 24, height: 24 }} 
+              style={styles.tabIcon}
+              resizeMode="contain"
             />
           ),
         }}
@@ -133,3 +132,20 @@ export default function Tablayout() {
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  blurView: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
+    overflow: 'hidden',
+  },
+  tabIcon: {
+    width: 24,
+    height: 24,
+  },
+});
