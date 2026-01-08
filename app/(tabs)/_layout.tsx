@@ -22,7 +22,7 @@ export default function Tablayout() {
         },
         tabBarBackground: () => (
           <BlurView 
-            intensity={Platform.OS === 'ios' ? 20 : 0} 
+            intensity={Platform.OS === 'ios' ? 15 : 20} 
             tint={Platform.OS === 'ios' ? 'light' : 'default'}
             experimentalBlurMethod={Platform.OS === 'android' ? 'dimezisBlurView' : undefined}
             style={styles.blurView}
