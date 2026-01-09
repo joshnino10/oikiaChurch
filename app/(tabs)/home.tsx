@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.page}>
-        <Header />
-        <TodayManner />
+        <Header/>
+        <TodayManner/>
         <UpcomingService/>
         <QuickAction/>
       </ScrollView>
