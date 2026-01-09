@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import React from 'react'
 import Header from '@/component/HomePage/Header'
 import TodayManner from '@/component/HomePage/TodayManner'
+import UpcomingService from '@/component/HomePage/UpcomingService'
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <ScrollView contentContainerStyle={styles.page}>
         <Header />
         <TodayManner />
+        <UpcomingService/>
       </ScrollView>
     </SafeAreaView>
   )
@@ -21,7 +23,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   page: {
-    paddingHorizontal: 16,
+  
     paddingBottom: 20,
   },
 })
