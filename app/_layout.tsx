@@ -1,22 +1,22 @@
-import { Stack } from "expo-router";
 import {
   Poppins_100Thin,
   Poppins_300Light,
   Poppins_400Regular,
   Poppins_500Medium,
+  Poppins_500Medium_Italic,
   Poppins_600SemiBold,
   Poppins_700Bold,
   Poppins_800ExtraBold,
   Poppins_900Black,
-  Poppins_500Medium_Italic,
- 
   useFonts
 } from "@expo-google-fonts/poppins";
+import { Stack } from "expo-router";
 
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect, useState } from "react";
 import CustomSplashScreen1 from "@/component/CustomSplashScreens/CustomSplashScreen1";
 import CustomSplashScreen2 from "@/component/CustomSplashScreens/CustomSplashScreen2";
+import { ThemeProvider } from "@/theme/themContext";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect, useState } from "react";
 
 export default function RootLayout() {
   const [currentSplash, setCurrentSplash] = useState(1);
@@ -68,8 +68,10 @@ export default function RootLayout() {
 
   // Show main app
   return (
+    <ThemeProvider>
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />
     </Stack>
+    </ThemeProvider>
   );
 }
