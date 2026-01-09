@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
 export default function Header() {
@@ -12,7 +12,7 @@ export default function Header() {
       </View>
       
       <View style={styles.iconsContainer}>
-        <View style={styles.imageContainer}>
+        <TouchableOpacity style={styles.imageContainer}>
           <Image 
             source={
               isDarkMode 
@@ -21,14 +21,14 @@ export default function Header() {
             }
             style={styles.icon}
           />
-        </View>
+        </TouchableOpacity>
 
-        <View style={styles.imageContainer}>
+        <TouchableOpacity style={styles.imageContainer}>
           <Image 
             source={require('../../assets/images/light brightness bell.png')}
             style={styles.icon}
           />
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   )
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   iconsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 16, 
+    gap: 16, // Space between icons
   },
   imageContainer: {
     padding: 8,
