@@ -1,6 +1,6 @@
 import React from 'react'
-import { Image, StyleSheet, Text, View, Pressable } from 'react-native'
-import { FlatList } from 'react-native'
+import { Image, StyleSheet, Text, View, Pressable, FlatList } from 'react-native'
+
 
 export default function QuickAction() {
 
@@ -71,9 +71,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 16,
+    height:80,
     borderRadius: 14,
     marginRight: 16,
-    width: 280,
+    width: 242,
   },
   logo: {
     width: 40,
@@ -84,9 +85,11 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: 'PoppinsSemiBold',
     fontSize: 14,
+    fontWeight:'600'
   },
+
   subTitle: {
-    fontFamily: 'PoppinsRegular',
+    fontFamily: 'PoppinsMedium',
     fontSize: 12,
     marginTop: 4,
     opacity: 0.9,
