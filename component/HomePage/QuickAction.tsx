@@ -1,8 +1,9 @@
+import { useRouter } from 'expo-router'
 import React from 'react'
-import { Image, StyleSheet, Text, View, Pressable, FlatList } from 'react-native'
-
+import { FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
 export default function QuickAction() {
+  const router = useRouter()
 
   const quickAction = [
     {
@@ -12,6 +13,7 @@ export default function QuickAction() {
       subTitle: 'We’d love to pray with you',
       backgroundColor: '#F5F5F5',
       color: '#000000',
+      route: '/quick-action/prayer',
     },
     {
       id: '2',
@@ -20,13 +22,14 @@ export default function QuickAction() {
       subTitle: 'Let’s rejoice with you',
       backgroundColor: '#000000',
       color: '#FFFFFF',
+      route: '/quick-action/testimonies',
     },
   ]
 
   const renderItem = ({ item }) => (
     <Pressable
       style={[styles.card, { backgroundColor: item.backgroundColor }]}
-      onPress={() => {}}
+      onPress={() => router.push(item.route)}
     >
       <Image source={item.logo} style={styles.logo} />
 
@@ -71,7 +74,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 16,
-    height:80,
+    height: 80,
     borderRadius: 14,
     marginRight: 16,
     width: 242,
@@ -85,9 +88,8 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: 'PoppinsSemiBold',
     fontSize: 14,
-    fontWeight:'600'
+    fontWeight: '600',
   },
-
   subTitle: {
     fontFamily: 'PoppinsMedium',
     fontSize: 12,

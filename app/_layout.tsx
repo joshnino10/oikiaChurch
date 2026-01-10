@@ -10,6 +10,17 @@ import {
   Poppins_900Black,
   useFonts
 } from "@expo-google-fonts/poppins";
+
+import { 
+  NotoSerif_400Regular,
+  NotoSerif_700Bold,
+} from '@expo-google-fonts/noto-serif';
+
+import {
+  MontserratAlternates_700Bold
+} from '@expo-google-fonts/montserrat-alternates';
+
+
 import { Stack } from "expo-router";
 
 import CustomSplashScreen1 from "@/component/CustomSplashScreens/CustomSplashScreen1";
@@ -30,7 +41,10 @@ export default function RootLayout() {
     PoppinsBold: Poppins_700Bold,
     PoppinsExtraBold: Poppins_800ExtraBold,
     PoppinsBlack: Poppins_900Black,
-    PoppinsItalic: Poppins_500Medium_Italic
+    PoppinsItalic: Poppins_500Medium_Italic,
+    NotoBold: NotoSerif_700Bold, 
+    NotoRegular: NotoSerif_400Regular,
+    MontserraBold: MontserratAlternates_700Bold
    
   });
 

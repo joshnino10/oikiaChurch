@@ -9,9 +9,7 @@ export default function TodayManner() {
             header: 'Today’s Manna',
             bibleVerse: 'Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.',
             biblePage: '— Joshua 1:9'
-
-            
-        }
+        },
     ]
   return (
 
@@ -26,9 +24,7 @@ export default function TodayManner() {
                     <Text style={styles.biblepage}>{item.biblePage}</Text>
                 </View>
             ))
-        }
-       
-       
+        }   
      
     </View>
   )
@@ -46,9 +42,11 @@ const styles = StyleSheet.create({
     },
 
     headertext:{
-        fontSize:10
+        fontFamily :'MontserraBold',
+        color: '#8C4616',
+        fontSize:12,
+        fontWeight:'700',
         
-
     },
 
     bibleverse:{
@@ -58,7 +56,10 @@ const styles = StyleSheet.create({
     },
     biblepage:{
         marginTop:20,
-        fontSize:10
+        fontSize:12,
+        fontFamily :'MontserraBold',
+        color: '#8C4616',
+        fontWeight:'700',
 
     },
 })

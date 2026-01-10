@@ -37,18 +37,20 @@ export default function Header() {
 const styles = StyleSheet.create({
   container: {
     flexDirection:'row',
+    alignItems: 'center',
     justifyContent:'space-between',
     paddingHorizontal: 16,
     paddingVertical: 12,
    
   },
   titleContainer: {
-    marginBottom: 12,
+    // marginBottom: 12,
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#333',
+    fontFamily: 'NotoBold',
+    fontSize: 20,
+    fontWeight: '700',
+    color: '#000000',
   },
   iconsContainer: {
     flexDirection: 'row',
