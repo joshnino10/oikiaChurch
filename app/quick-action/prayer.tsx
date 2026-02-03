@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import PrayerSection from '@/component/PrayerSection/PrayerSection'
 
 export default function Prayer() {
   return (
     <View>
-      <Text>prayer</Text>
+      <PrayerSection/>
+      
     </View>
   )
 }

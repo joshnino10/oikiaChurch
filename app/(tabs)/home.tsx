@@ -1,10 +1,10 @@
-import { ScrollView, StyleSheet } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import React from 'react'
 import Header from '@/component/HomePage/Header'
+import QuickAction from '@/component/HomePage/QuickAction'
 import TodayManner from '@/component/HomePage/TodayManner'
 import UpcomingService from '@/component/HomePage/UpcomingService'
-import QuickAction from '@/component/HomePage/QuickAction'
+import React from 'react'
+import { ScrollView, StyleSheet } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function Home() {
   return (
@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   page: {
-  
-    paddingBottom: 20,
+    paddingBottom: 40,
   },
 })
