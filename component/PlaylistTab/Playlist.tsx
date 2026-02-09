@@ -23,7 +23,7 @@ export default function Playlist() {
       title: 'The Holy Spirit',
       subtitle: 'Collections',
     },
-    
+
     {
       id: "3",
       image: require('../../assets/images/festival collection.png'),
@@ -73,13 +73,13 @@ const styles = StyleSheet.create({
 
   image: {
     width: '100%',
-    height: 120,
+    height: 125,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
   },
 
   imageRadius: {
-    borderRadius: 10,
+    borderRadius: 20,
   },
 
   partsText: {
@@ -97,13 +97,15 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 16,
+    fontFamily: 'PoppinsSemiBold',
+    fontSize: 14,
     fontWeight: '600',
     color: '#000',
   },
 
   subtitle: {
-    fontSize: 13,
+    fontFamily: 'Poppinsregular',
+    fontSize: 12,
     color: '#666',
     marginTop: 4,
   },

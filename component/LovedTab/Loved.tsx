@@ -74,12 +74,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 14,
-    fontWeight: '600',
+    fontFamily: 'PoppinsSemibold',
+    fontSize: 15,
+    fontWeight: "600",
+    color: "#000",
+    flexShrink: 1, // ensures long titles wrap
   },
   pastorName: {
+    fontFamily: 'Poppinsregular',
     fontSize: 12,
-    color: '#555',
-    marginTop: 2,
+    fontWeight: '400',
+    marginTop: 6,
   },
 })
