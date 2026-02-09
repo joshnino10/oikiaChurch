@@ -1,12 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Sermonheader from '@/component/SermonPage/Sermonheader'
+import ActiveTab from '@/component/SermonPage/ActiveTab'
 
 export default function Sermon() {
   return (
-    <View>
-      <Text>sermon</Text>
-    </View>
+    <SafeAreaView style={styles.Safearea}>
+      <Sermonheader/>
+      <ActiveTab/>
+     
+    </SafeAreaView>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  Safearea:{
+    flex:1,
+    backgroundColor: 'white'
+  }
+
+})
