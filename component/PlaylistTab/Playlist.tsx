@@ -16,12 +16,14 @@ export default function Playlist() {
       title: 'Prayers',
       subtitle: 'Collections',
     },
+
     {
       id: "2",
       image: require('../../assets/images/holy spirit collection.png'),
       title: 'The Holy Spirit',
       subtitle: 'Collections',
     },
+    
     {
       id: "3",
       image: require('../../assets/images/festival collection.png'),
