@@ -57,21 +57,18 @@ export default function ActiveTab() {
 
       </View>
 
-
-
-
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
+    paddingHorizontal:20,
     marginTop: 20,
   },
   tabRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
   tab: {
     alignItems: 'center',
@@ -87,7 +84,7 @@ const styles = StyleSheet.create({
   },
   underline: {
     marginTop:0,
-    height: 2,
+    height: 1,
     width: '100%',
     backgroundColor: '#000',
     borderRadius: 2,
