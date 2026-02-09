@@ -1,22 +1,22 @@
-import { router, useRouter } from 'expo-router';
-import React, { useRef, useState } from 'react';
+import { useRouter } from 'expo-router';
+import React, { useCallback, useRef, useState } from 'react';
 import {
   FlatList,
   StyleSheet,
   Text,
   View,
   Image,
-  Dimensions,
   TouchableOpacity,
   StatusBar,
+  SafeAreaView,
+  useWindowDimensions,
 } from 'react-native';
-
-const { width } = Dimensions.get('window');
 
 export default function OnboardingScreen() {
   const router = useRouter();
   const flatListRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { width, height } = useWindowDimensions();
 
   const Slides = [
     {
@@ -57,6 +57,12 @@ export default function OnboardingScreen() {
 
   const viewConfigRef = useRef({ viewAreaCoveragePercentThreshold: 50 });
 
+  const getItemLayout = (_, index) => ({
+    length: width,
+    offset: width * index,
+    index,
+  });
+
   const goNext = () => {
     if (currentIndex < Slides.length - 1) {
       flatListRef.current.scrollToIndex({
@@ -76,7 +82,7 @@ export default function OnboardingScreen() {
   };
 
   const skip = () => {
-    flatListRef.current?.scrollToIndex({
+    flatListRef.current.scrollToIndex({
       index: Slides.length - 1,
       animated: true,
     });
@@ -86,19 +92,43 @@ export default function OnboardingScreen() {
     router.replace('/(auth)/welcomeSplash');
   };
 
-  const renderItem = ({ item }) => (
-    <View style={styles.slideContainer}>
-      <View style={styles.imageContainer}>
-        <Image source={item.image} style={styles.image} />
+  const renderItem = useCallback(
+    ({ item }) => (
+      <View style={[styles.slideContainer, { width }]}>
+        <View
+          style={[
+            styles.imageContainer,
+            { height: height * 0.45 },
+          ]}
+        >
+          <Image source={item.image} style={styles.image} />
+        </View>
+
+        <Text
+          style={[
+            styles.slideTitle,
+            { fontSize: height < 700 ? 22 : 25 },
+          ]}
+        >
+          {item.title}
+        </Text>
+
+        <Text
+          style={[
+            styles.slideSubtitle,
+            { fontSize: height < 700 ? 14 : 16 },
+          ]}
+        >
+          {item.subtitle}
+        </Text>
       </View>
-      <Text style={styles.slideTitle}>{item.title}</Text>
-      <Text style={styles.slideSubtitle}>{item.subtitle}</Text>
-    </View>
+    ),
+    [width, height]
   );
 
   return (
-    <View style={styles.page}>
-      <StatusBar barStyle={'dark-content'} backgroundColor="white" />
+    <SafeAreaView style={styles.page}>
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
 
       {/* HEADER */}
       <View style={styles.headerContainer}>
@@ -109,32 +139,36 @@ export default function OnboardingScreen() {
         </View>
       </View>
 
-      {/* SLIDES */}
-      <FlatList
-        ref={flatListRef}
-        data={Slides}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        onViewableItemsChanged={onViewRef.current}
-        viewabilityConfig={viewConfigRef.current}
-      />
+      {/* SLIDES + DOTS */}
+      <View style={{ flex: 1 }}>
+        <FlatList
+          ref={flatListRef}
+          data={Slides}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          horizontal
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+          onViewableItemsChanged={onViewRef.current}
+          viewabilityConfig={viewConfigRef.current}
+          getItemLayout={getItemLayout}
+        />
 
-      {/* DOTS */}
-      <View style={styles.dotsContainer}>
-        {Slides.map((_, index) => (
-          <View
-            key={index}
-            style={[styles.dot, currentIndex === index && styles.activeDot]}
-          />
-        ))}
+        <View style={styles.dotsContainer}>
+          {Slides.map((_, index) => (
+            <View
+              key={index}
+              style={[
+                styles.dot,
+                currentIndex === index && styles.activeDot,
+              ]}
+            />
+          ))}
+        </View>
       </View>
 
-      {/* BOTTOM ACTIONS */}
+      {/* BOTTOM BAR */}
       <View style={styles.bottomBar}>
-        {/* Left button: Skip or Back */}
         {currentIndex === 0 ? (
           <TouchableOpacity onPress={skip}>
             <Text style={styles.skipText}>Skip</Text>
@@ -145,21 +179,27 @@ export default function OnboardingScreen() {
           </TouchableOpacity>
         )}
 
-        {/* Right button: Next arrow or Get Started */}
         {currentIndex < Slides.length - 1 ? (
-          <TouchableOpacity style={styles.nextBtn} onPress={goNext}>
+          <TouchableOpacity
+            style={styles.nextBtn}
+            onPress={goNext}
+            accessibilityLabel="Next slide"
+          >
             <Image
               source={require('../../assets/images/nexticon.png')}
               style={styles.nextIcon}
             />
           </TouchableOpacity>
         ) : (
-          <TouchableOpacity style={styles.getStartedBtn} onPress={handleGetStarted}>
+          <TouchableOpacity
+            style={styles.getStartedBtn}
+            onPress={handleGetStarted}
+          >
             <Text style={styles.getStartedText}>Get Started</Text>
           </TouchableOpacity>
         )}
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -171,11 +211,11 @@ const styles = StyleSheet.create({
 
   /* HEADER */
   headerContainer: {
-    marginTop: 20,
-    alignSelf: 'center',
     flexDirection: 'row',
     alignItems: 'center',
+    alignSelf: 'center',
     gap: 10,
+    marginTop: 10,
   },
 
   title: {
@@ -197,18 +237,16 @@ const styles = StyleSheet.create({
 
   /* SLIDES */
   slideContainer: {
-    width,
+    flex: 1,
     alignItems: 'center',
     paddingHorizontal: 20,
-    marginTop: 30,
   },
 
   imageContainer: {
-    marginTop: 30,
-    width: '80%',
-    height: 400,
+    width: '85%',
     borderRadius: 20,
     overflow: 'hidden',
+    marginTop: 20,
   },
 
   image: {
@@ -218,17 +256,14 @@ const styles = StyleSheet.create({
 
   slideTitle: {
     fontFamily: 'PoppinsSemiBold',
-    fontSize: 25,
-    fontWeight: '600',
-    marginTop: 30,
+    marginTop: 24,
+    textAlign: 'center',
   },
 
   slideSubtitle: {
     fontFamily: 'PoppinsMedium',
-    fontSize: 16,
+    marginTop: 14,
     textAlign: 'center',
-    marginTop: 20,
-    fontWeight: '500',
     color: '#858484',
   },
 
@@ -258,12 +293,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 30,
-    marginBottom: 30,
+    paddingVertical: 20,
   },
 
   skipText: {
     fontFamily: 'PoppinsMedium',
-    fontWeight: '500',
     fontSize: 16,
     color: '#858484',
   },
