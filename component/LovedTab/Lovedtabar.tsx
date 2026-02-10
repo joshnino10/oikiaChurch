@@ -1,31 +1,18 @@
-import React from 'react'
-import { StyleSheet, View, Text, Pressable, Image } from 'react-native'
-import { activelovedtab } from './Loved'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
+import React from 'react'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import { activelovedtab } from './Loved'
 
-export default function Loved() {
-  const handlePress = (item) => {
-    console.log('Pressed loved item:', item.title)
-  }
-
+export default function Lovedtabar() {
   return (
     <View>
       {activelovedtab.map((item) => (
-        <Pressable
-          key={item.id}
-          onPress={() => handlePress(item)}
-          style={({ pressed }) => [
-            styles.card,
-            pressed && styles.cardPressed,
-          ]}
-        >
+        <Pressable key={item.id} style={styles.card}>
           <View style={styles.row}>
-          
-            <Image style={styles.img} source={item.image} />
+            <Image source={item.image} style={styles.img} />
 
-         
             <View style={styles.content}>
-              <View>
+              <View style={{ flex: 1 }}>
                 <Text style={styles.title} numberOfLines={1}>
                   {item.title}
                 </Text>
@@ -36,7 +23,7 @@ export default function Loved() {
 
               <MaterialIcons
                 name="arrow-forward-ios"
-                size={19}
+                size={18}
                 color="#8C4616"
               />
             </View>
@@ -50,12 +37,9 @@ export default function Loved() {
 const styles = StyleSheet.create({
   card: {
     padding: 12,
-    marginBottom: 20,
+    marginBottom: 25,
     backgroundColor: '#f2f2f2',
     borderRadius: 12,
-  },
-  cardPressed: {
-    opacity: 0.7,
   },
   row: {
     flexDirection: 'row',
@@ -63,27 +47,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   img: {
-    width: 88,
+    width: 80,
     height: 93,
     borderRadius: 8,
   },
   content: {
-    flex: 1,                  
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   title: {
-    fontFamily: 'PoppinsSemibold',
-    fontSize: 15,
-    fontWeight: "600",
-    color: "#000",
-    flexShrink: 1, // ensures long titles wrap
+    fontFamily: 'poppinsSemiBold',
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#000',
   },
   pastorName: {
-    fontFamily: 'Poppinsregular',
+    fontFamily: 'poppinsregular',
     fontSize: 12,
-    fontWeight: '400',
-    marginTop: 6,
+    marginTop: 4,
+  
   },
 })
