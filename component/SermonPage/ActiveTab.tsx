@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Pressable, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import Live from '../LiveTab/Live'
 import Sermons from '../SermonsTab/Sermons'
-import Loved from '../LovedTab/Loved'
+import Loved from '../../component/LovedTab/Loved'
 import Playlist from '../PlaylistTab/Playlist'
 
 
@@ -44,15 +44,10 @@ export default function ActiveTab() {
 
       <View style={styles.ContentContainer}>
         <ScrollView>
-
             {activeTab === "Live" && <Live/>}
             {activeTab === "Sermons" && <Sermons/>}
             {activeTab === "Loved" && <Loved/>}
             {activeTab === "Playlist" && <Playlist/>}
-
-
-
-
         </ScrollView>
 
       </View>
