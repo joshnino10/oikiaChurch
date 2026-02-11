@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import { StyleSheet, Text, View, TextInput, Platform } from "react-native";
 import React from "react";
 import Feather from "@expo/vector-icons/Feather";
 
@@ -31,9 +31,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   searchBox: {
+    alignItems:'center',
     backgroundColor: "#F5F5F5",
-    paddingHorizontal: 15,
-    paddingVertical: 10,
+    paddingHorizontal: Platform.OS === 'ios'? 15:10,
+    paddingVertical: Platform.OS === 'ios'? 10:7,
     borderRadius: 2000,
     flexDirection:"row",
   },

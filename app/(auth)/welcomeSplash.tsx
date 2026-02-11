@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet, Image, Animated } from 'react-native';
-import React, { useEffect, useRef } from 'react';
 import { useRouter } from 'expo-router';
+import React, { useEffect, useRef } from 'react';
+import { Animated, Image, StatusBar, StyleSheet, Text, View } from 'react-native';
 
 export default function WelcomeSplash() {
   const router = useRouter();
@@ -33,6 +33,7 @@ export default function WelcomeSplash() {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle='light-content' backgroundColor="#261306" />
       <Animated.View
         style={[
           styles.content,

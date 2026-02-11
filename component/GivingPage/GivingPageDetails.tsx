@@ -7,9 +7,7 @@ export default function GivingPageDetails() {
 
   const handlePress = () => {
     router.push('/(tabs)/giving')
- 
-    
-    
+      
   };
 
   return (
