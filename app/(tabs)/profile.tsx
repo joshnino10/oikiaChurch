@@ -1,12 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
 export default function Profile() {
   return (
-    <View>
+    <SafeAreaView style={styles.safeArea}>
       <Text>profile</Text>
-    </View>
+    </SafeAreaView>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  safeArea:{
+    flex:1,
+    backgroundColor:'white'
+  }
+})
