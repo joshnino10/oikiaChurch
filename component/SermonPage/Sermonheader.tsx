@@ -37,7 +37,7 @@ export default function NoteDetails() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+   
     backgroundColor: "#FFFFFF",
   },
 

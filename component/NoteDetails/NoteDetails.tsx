@@ -6,14 +6,16 @@ import {
   Text,
   TextInput,
   View,
-  SafeAreaView,
+
+  Image,
+  Pressable,
 } from "react-native";
 
 export default function NoteDetails() {
   const [search, setSearch] = useState("");
 
   return (
-    <SafeAreaView style={styles.container}>
+   
       <View style={styles.page}>
         <View style={styles.row}>
           <Text style={styles.word}>Journals</Text>
@@ -30,18 +32,32 @@ export default function NoteDetails() {
             <Feather   style={styles.searchIcon} name="search" size={18} color="#A9A9A9" />
           </View>
         </View>
+
+        <View style={styles.centeredPage}>
+           <Image style={styles.icon} source={require('../../assets/images/note icon.png')}/>
+           <Text style={styles.title}>Spiritual Journal</Text>
+           <Text style={styles.subtitle}>Your personal sanctuary for revelations
+           received during the word. </Text>
+
+           <Pressable style={styles.pressbtn}>
+            <Text style={styles.pressText}>Create New Note</Text>
+           </Pressable>
+        </View>
+
+
+
+
+
       </View>
-    </SafeAreaView>
+  
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
-  },
+
 
   page: {
+    flex:1,
     paddingHorizontal: 16,
     paddingTop: Platform.OS === "android" ? 40 : 10,
   },
@@ -84,4 +100,45 @@ const styles = StyleSheet.create({
   searchIcon: {
     marginLeft: 20,
   },
+
+  centeredPage:{
+    flex:1,
+    justifyContent:"center",
+    alignItems:'center',
+  },
+
+  icon:{
+    width:102,
+    height:102,
+    marginBottom:20,
+
+  },
+
+  title:{
+    fontFamily: 'PoppinsSemiBold',
+    fontWeight:'600',
+    fontSize:20,
+    marginBottom:15,
+
+  },
+  subtitle:{
+    fontFamily: 'PoppinsSemiBold',
+    fontWeight:'600',
+    fontSize:16,
+    lineHeight:22,
+    color:'#757575',
+    textAlign:'center'
+  },
+
+  pressbtn:{
+    marginTop:35
+  },
+  pressText:{
+    fontFamily: 'PoppinsSemiBold',
+    fontWeight: '600',
+    fontSize:16,
+    color:'#8C4616'
+
+  }
+
 });
