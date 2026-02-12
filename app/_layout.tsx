@@ -25,7 +25,6 @@ import { Stack } from "expo-router";
 
 import CustomSplashScreen1 from "@/component/CustomSplashScreens/CustomSplashScreen1";
 import CustomSplashScreen2 from "@/component/CustomSplashScreens/CustomSplashScreen2";
-import { ThemeProvider } from "@/theme/themContext";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState } from "react";
 
@@ -82,10 +81,10 @@ export default function RootLayout() {
 
   // Show main app
   return (
-    <ThemeProvider>
+   
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />
     </Stack>
-    </ThemeProvider>
+   
   );
 }
