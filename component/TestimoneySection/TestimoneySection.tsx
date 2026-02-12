@@ -1,26 +1,26 @@
 import { useRouter } from 'expo-router'
 import React, { useState } from 'react'
 import {
-  Image,
-  Keyboard,
-  KeyboardAvoidingView,
-  Platform,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View
+    Image,
+    Keyboard,
+    KeyboardAvoidingView,
+    Platform,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    TouchableWithoutFeedback,
+    View
 } from 'react-native'
 
-export default function PrayerSection() {
+export default function TestimoneySection() {
 
   const router = useRouter()
-  const [prayerRequest, setPrayerRequest] = useState('')
+  const [testimoney, setTestiomoney] = useState('')
   const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = () => {
-    if (!prayerRequest.trim()) return
+    if (!testimoney.trim()) return
 
     Keyboard.dismiss()
     setSubmitted(true)
@@ -46,7 +46,7 @@ export default function PrayerSection() {
             />
 
             <Text style={styles.headerText}>
-               The Prayer Chamber
+              Great is Thy Faithfulness
             </Text>
           </View>
 
@@ -68,8 +68,8 @@ export default function PrayerSection() {
                   <TextInput
                     style={styles.textInput}
                     multiline
-                    value={prayerRequest}
-                    onChangeText={setPrayerRequest}
+                    value={testimoney}
+                    onChangeText={setTestiomoney}
                     placeholder="I want to share how God..."
                     placeholderTextColor="#999"
                   />
@@ -78,14 +78,14 @@ export default function PrayerSection() {
                 <TouchableOpacity
                   style={[
                     styles.button,
-                    !prayerRequest.trim() && { opacity: 0.5 }
+                    !testimoney.trim() && { opacity: 0.5 }
                   ]}
                   activeOpacity={0.8}
                   onPress={handleSubmit}
-                  disabled={!prayerRequest.trim()}
+                  disabled={!testimoney.trim()}
                 >
                   <Text style={styles.buttonText}>
-                  Send to Oikia Team
+                     Send to Oikia Team 
                   </Text>
                 </TouchableOpacity>
               </>

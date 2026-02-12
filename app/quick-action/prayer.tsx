@@ -4,11 +4,16 @@ import PrayerSection from '@/component/PrayerSection/PrayerSection'
 
 export default function Prayer() {
   return (
-    <View>
+    <View style={styles.page}>
       <PrayerSection/>
       
     </View>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  page:{
+    flex:1,
+    backgroundColor:'white'
+  }
+})
