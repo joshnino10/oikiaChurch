@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
 
   headerText: {
     fontFamily: 'PoppinsSemiBold',
-    fontSize: 16,
+    fontSize: 20,
     color: '#000000'
 
   },

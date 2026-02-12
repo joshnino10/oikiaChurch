@@ -69,8 +69,8 @@ const styles = StyleSheet.create({
   },
 
   word: {
-    fontSize: 22,
-    fontFamily: "NotoBold",
+    fontSize: 20,
+    fontFamily: "PoppoinsSemiBold",
     color: "#000000",
     fontWeight: "700",
   },

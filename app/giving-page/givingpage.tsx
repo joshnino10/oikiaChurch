@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     },
     
     headertext:{
-        fontSize:16,
+        fontSize:20,
         fontFamily:'poppinsSemiBold',
         fontWeight: '600',
         color: '#000000',

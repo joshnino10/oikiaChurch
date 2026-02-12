@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
 
   word: {
-    fontSize: 22,
+    fontSize: 20,
     fontFamily: "NotoBold",
     color: "#000000",
     fontWeight: "700",
