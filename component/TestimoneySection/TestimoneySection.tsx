@@ -27,7 +27,7 @@ export default function TestimoneySection() {
 
     setTimeout(() => {
       router.replace('/home')
-    }, 4000)
+    }, 3000)
   }
 
   return (

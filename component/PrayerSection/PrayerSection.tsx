@@ -27,7 +27,7 @@ export default function PrayerSection() {
 
     setTimeout(() => {
       router.replace('/home')
-    }, 4000)
+    }, 3000)
   }
 
   return (
@@ -70,7 +70,7 @@ export default function PrayerSection() {
                     multiline
                     value={prayerRequest}
                     onChangeText={setPrayerRequest}
-                    placeholder="I want to share how God..."
+                    placeholder="I believing God for....."
                     placeholderTextColor="#999"
                   />
                 </View>
