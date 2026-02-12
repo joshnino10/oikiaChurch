@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { Platform, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import MissionCategories from "./MissionCategories";
 import PaymentMethod from "./PaymentMethod";
@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
 
   inputWrapper: {
     backgroundColor: "#F5F5F5",
-    height: 56,
+    flex:1,
+    height: Platform.OS === 'ios'? 56:40,
     borderRadius: 10,
     justifyContent: "center",
     paddingHorizontal: 16,

@@ -63,6 +63,7 @@ export default function QuickAction() {
 const styles = StyleSheet.create({
   container: {
     marginTop: 30,
+    marginBottom:80,
   },
   headertext: {
     fontFamily: 'PoppinsSemiBold',

@@ -1,12 +1,12 @@
 import { useRouter } from "expo-router";
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function GivingPageDetails() {
     const router = useRouter()
 
   const handlePress = () => {
-    router.push('/(tabs)/giving')
+    router.replace('/(tabs)/giving')
       
   };
 
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 20, // horizontal padding
+    paddingHorizontal: 20, 
     paddingVertical: 20,
   },
   icon:{
@@ -40,12 +40,15 @@ const styles = StyleSheet.create({
     marginBottom:10
   },
   centerTextTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: 'PoppinsSemiBold',
+    fontSize: 32,
+    fontWeight: "600",
     marginBottom: 15,
     textAlign: "center",
   },
   messageText: {
+    fontFamily: 'PoppinsMedium',
+    fontWeight: '500',
     fontSize: 16,
     textAlign: "center",
     marginBottom: 30,
@@ -53,14 +56,15 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#8C4616",
     paddingVertical: 12,
-    borderRadius: 8,
+    borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
-    alignSelf: "stretch", // button stretches to fill container width
+    alignSelf: "stretch", 
   },
   buttonText: {
-    color: "#fff",
+    fontFamily: 'PoppinsSemiBold',
+    color: "#FFFFFF",
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: "600",
   },
 });

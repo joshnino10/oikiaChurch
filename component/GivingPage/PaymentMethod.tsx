@@ -22,7 +22,7 @@ export default function PaymentMethod() {
           {
             text: "OK",
             onPress: () => {
-              router.replace("/giving-page/givingpage"); // navigate only after OK
+              router.replace("/giving-page/givingpage");
             },
           },
         ],
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: "center",
     alignSelf: "stretch", // stretch across container
-    marginBottom: 30,
+    marginBottom: 80,
   },
 
   payButtonDisabled: {

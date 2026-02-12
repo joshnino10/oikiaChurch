@@ -1,12 +1,12 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import GivingHeader from '@/component/GivingPage/GivingHeader'
 import GenerousGiving from '@/component/GivingPage/GenerousGiving'
+import GivingHeader from '@/component/GivingPage/GivingHeader'
+import React from 'react'
+import { SafeAreaView, ScrollView, StyleSheet } from 'react-native'
 
 export default function Giving() {
   return (
     <SafeAreaView style={styles.SafeArea}>
-      <ScrollView style={{marginBottom:0}}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <GivingHeader/>
         <GenerousGiving/>
 

@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
   },
   scrollContent: {
-    flexGrow: 1, // VERY IMPORTANT for proper scroll behavior
+    flexGrow: 1,
     paddingBottom: 40,
   },
   container: {
-    paddingHorizontal: 16, // consistent horizontal spacing
+    // paddingHorizontal: 16,
   },
 });
