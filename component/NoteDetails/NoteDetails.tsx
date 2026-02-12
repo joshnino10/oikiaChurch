@@ -16,7 +16,7 @@ export default function NoteDetails() {
     <SafeAreaView style={styles.container}>
       <View style={styles.page}>
         <View style={styles.row}>
-          <Text style={styles.word}>The Word</Text>
+          <Text style={styles.word}>Journals</Text>
 
           <View style={styles.searchBox}>
 

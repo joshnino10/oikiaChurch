@@ -1,12 +1,20 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import NoteDetails from '@/component/NoteDetails/NoteDetails'
 
 export default function Note() {
   return (
-    <View>
-      <Text>note</Text>
-    </View>
+    <SafeAreaView style={styles.SafeArea}>
+      <StatusBar barStyle='dark-content' backgroundColor="white"/>
+      <NoteDetails/>
+     
+    </SafeAreaView>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  SafeArea:{
+    flex:1,
+    backgroundColor:'white'
+  }
+})
