@@ -118,10 +118,15 @@ const styles = StyleSheet.create({
   },
 
   imgContainer: {
+ 
+    borderRadius:20,
+    borderColor:'#261306',
     position: 'relative',
+  
   },
 
   img: {
+    borderRadius:20,
     width: 123,
     height: 123,
      
