@@ -44,11 +44,6 @@ export default function NoteDetails() {
             <Text style={styles.pressText}>Create New Note</Text>
            </Pressable>
         </View>
-
-
-
-
-
       </View>
   
   );

@@ -1,19 +1,21 @@
 import { useRouter } from 'expo-router'
 import React, { useState } from 'react'
 import {
-    Image,
-    Keyboard,
-    KeyboardAvoidingView,
-    Platform,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    View
+  Image,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View
 } from 'react-native'
+import { useTheme } from '../context/ThemeProvider'
 
 export default function TestimoneySection() {
+   const {theme} = useTheme()
 
   const router = useRouter()
   const [testimoney, setTestiomoney] = useState('')
@@ -37,20 +39,20 @@ export default function TestimoneySection() {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         
-        <View style={styles.Container}>
+        <View style={[styles.Container,{backgroundColor: theme.colors.secondary}]}>
           
           <View style={styles.center}>
             <Image 
               style={styles.logo}
-              source={require('../../assets/images/action logo 1.png')}
+              source={submitted? require('../../assets/images/action logo 1.png' ): require('../../assets/images/action logo 2.png')}
             />
 
-            <Text style={styles.headerText}>
+            <Text style={[styles.headerText, {color: theme.colors.text}]}>
               Great is Thy Faithfulness
             </Text>
           </View>
 
-          <View style={styles.MessageContainer}>
+          <View style={[styles.MessageContainer, {backgroundColor: theme.colors.quickBackground}]}>
 
             {submitted ? (
               <View style={styles.successContainer}>
@@ -128,12 +130,12 @@ const styles = StyleSheet.create({
   },
 
   MessageContainer:{
+    height:'100%',
     backgroundColor:'#FFFFFF',
-    borderTopRightRadius:40,
-    borderTopLeftRadius:40,
+    borderTopRightRadius:50,
+    borderTopLeftRadius:50,
     padding:25,
     paddingBottom:30,
-    minHeight:320
   },
 
   inputContainer:{
