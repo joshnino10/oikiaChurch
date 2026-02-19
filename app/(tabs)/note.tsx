@@ -1,20 +1,25 @@
-import { SafeAreaView, StatusBar, StyleSheet,  } from 'react-native'
-import React from 'react'
-import NoteDetails from '@/component/NoteDetails/NoteDetails'
+import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import React from 'react';
+import NoteDetails from '@/component/NoteDetails/NoteDetails';
+import { useTheme } from '@/component/context/ThemeProvider';
 
 export default function Note() {
+  const { theme } = useTheme();
+  const isDarkMode = theme.mode === 'dark';
+
   return (
-    <SafeAreaView style={styles.SafeArea}>
-      <StatusBar barStyle='dark-content' backgroundColor="white"/>
-      <NoteDetails/>
-     
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.colors.background }]}>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={theme.colors.background}
+      />
+      <NoteDetails />
     </SafeAreaView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-  SafeArea:{
-    flex:1,
-    backgroundColor:'white'
-  }
-})
+  safeArea: {
+    flex: 1,
+  },
+});

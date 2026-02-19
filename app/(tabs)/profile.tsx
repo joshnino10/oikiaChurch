@@ -1,24 +1,32 @@
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet,  } from 'react-native'
-import React from 'react'
-import ProfileHeader from '@/component/ProfileDetails.tsx/ProfileHeader'
-import Sanctuary from '@/component/ProfileDetails.tsx/Sanctuary'
+import { SafeAreaView, ScrollView, StatusBar, StyleSheet } from 'react-native';
+import React from 'react';
+import ProfileHeader from '@/component/ProfileDetails.tsx/ProfileHeader';
+import Sanctuary from '@/component/ProfileDetails.tsx/Sanctuary';
+import { useTheme } from '@/component/context/ThemeProvider';
 
 export default function Profile() {
+  const { theme } = useTheme();
+  const isDarkMode = theme.mode === 'dark';
+
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle='dark-content' backgroundColor="white"/>
-      <ScrollView>
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.colors.background }]}>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={theme.colors.background}
+      />
+      <ScrollView
+        contentContainerStyle={{ backgroundColor: theme.colors.background }}
+        showsVerticalScrollIndicator={false}
+      >
         <ProfileHeader />
-        <Sanctuary/>
+        <Sanctuary />
       </ScrollView>
-     
     </SafeAreaView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-  safeArea:{
-    flex:1,
-    backgroundColor:'white'
-  }
-})
+  safeArea: {
+    flex: 1,
+  },
+});

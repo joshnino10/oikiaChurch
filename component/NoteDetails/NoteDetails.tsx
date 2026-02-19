@@ -6,19 +6,20 @@ import {
   Text,
   TextInput,
   View,
-
   Image,
   Pressable,
 } from "react-native";
+import { useTheme } from "../context/ThemeProvider";
 
 export default function NoteDetails() {
+  const {theme} = useTheme()
   const [search, setSearch] = useState("");
 
   return (
    
       <View style={styles.page}>
         <View style={styles.row}>
-          <Text style={styles.word}>Journals</Text>
+          <Text style={[styles.word, {color: theme.colors.text}]}>Journals</Text>
 
           <View style={styles.searchBox}>
 
@@ -35,7 +36,7 @@ export default function NoteDetails() {
 
         <View style={styles.centeredPage}>
            <Image style={styles.icon} source={require('../../assets/images/note icon.png')}/>
-           <Text style={styles.title}>Spiritual Journal</Text>
+           <Text style={[styles.title,{color: theme.colors.text}]}>Spiritual Journal</Text>
            <Text style={styles.subtitle}>Your personal sanctuary for revelations
            received during the word. </Text>
 

@@ -10,8 +10,10 @@ import {
 } from 'react-native'
 import * as ImagePicker from 'expo-image-picker'
 import { userprofile } from './users'
+import { useTheme } from '../context/ThemeProvider'
 
 export default function UserProfile() {
+  const {theme} = useTheme()
   const [selectedImage, setSelectedImage] = useState(null)
   const fadeAnim = useState(new Animated.Value(1))[0]
 
@@ -80,7 +82,7 @@ export default function UserProfile() {
             </View>
           </TouchableOpacity>
 
-          <Text style={styles.Username}>{item.userName}</Text>
+          <Text style={[styles.Username, {color: theme.colors.text}]}>{item.userName}</Text>
 
           <View style={styles.activeWrapper}>
             <View style={styles.background}>

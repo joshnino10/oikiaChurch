@@ -1,19 +1,25 @@
-import {  StyleSheet, View } from 'react-native'
-import React from 'react'
-import PrayerSection from '@/component/PrayerSection/PrayerSection'
+import PrayerSection from '@/component/PrayerSection/PrayerSection';
+import { useTheme } from '@/component/context/ThemeProvider';
+import React from 'react';
+import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 
 export default function Prayer() {
+  const { theme } = useTheme();
+  const isDarkMode = theme.mode === 'dark';
+
   return (
-    <View style={styles.page}>
-      <PrayerSection/>
-      
+    <View style={[styles.page, { backgroundColor: theme.colors.background }]}>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={theme.colors.secondary}
+      />
+      <PrayerSection />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-  page:{
-    flex:1,
-    backgroundColor:'white'
-  }
-})
+  page: {
+    flex:1
+  },
+});

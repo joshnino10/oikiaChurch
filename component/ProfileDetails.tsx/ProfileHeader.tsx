@@ -1,11 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import UserProfile from './UserProfile'
+import { useTheme } from '../context/ThemeProvider'
 
 export default function ProfileHeader() {
+  const {theme} = useTheme()
   return (
     <View style={styles.page}>
-      <Text style={styles.profile}>Profile</Text>
+      <Text style={[styles.profile, {color: theme.colors.text}]}>Profile</Text>
       <UserProfile/> 
     </View>
   )

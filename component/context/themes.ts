@@ -4,7 +4,8 @@ export const lightTheme = {
       background: '#ffffff',
       text: '#000000',
       primary: '#F5F5F5',
-      secondary: '#999999',
+      quickBackground: '#ffffff',
+      secondary: '#D3D3D3',
       card: '#f2f2f2',
     },
     fonts: {
@@ -19,7 +20,8 @@ export const lightTheme = {
       background: '#261306',
       text: '#FFFFFF',
       primary: '#7A573F',
-      secondary: '#cccccc',
+      quickBackground: '#ffffff',
+      secondary: '#261306',
       card: '#111111',
     },
     fonts: {

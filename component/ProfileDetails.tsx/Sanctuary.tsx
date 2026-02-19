@@ -1,7 +1,8 @@
 import React from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-
+import { useTheme } from '../context/ThemeProvider'
 export default function Sanctuary() {
+  const {theme} = useTheme()
 
     const mySanctuary = [
         {
@@ -38,7 +39,7 @@ export default function Sanctuary() {
 
   return (
     <View style={styles.Container}>
-      <Text style={styles.headerText}>My Sanctuary</Text>
+      <Text style={[styles.headerText, {color: theme.colors.text}]}>My Sanctuary</Text>
 
       {mySanctuary.map((item) => (
         <TouchableOpacity 
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
 
     card:{
         backgroundColor:'#F5F5F5',
-        marginBottom:20,
+        marginBottom:15,
         padding:20,
         borderRadius:16,
         

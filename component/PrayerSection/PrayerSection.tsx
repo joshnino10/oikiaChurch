@@ -12,8 +12,10 @@ import {
   TouchableWithoutFeedback,
   View
 } from 'react-native'
+import { useTheme } from '../context/ThemeProvider'
 
 export default function PrayerSection() {
+  const {theme} = useTheme()
 
   const router = useRouter()
   const [prayerRequest, setPrayerRequest] = useState('')
@@ -37,20 +39,26 @@ export default function PrayerSection() {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         
-        <View style={styles.Container}>
+        <View style={[styles.Container, {backgroundColor: theme.colors.secondary}]}>
           
           <View style={styles.center}>
             <Image 
               style={styles.logo}
-              source={require('../../assets/images/action logo 1.png')}
+              source={
+                submitted?
+                require('../../assets/images/action logo 1.png'):
+                require('../../assets/images/action logo 2.png')
+              }
+              
+              
             />
 
-            <Text style={styles.headerText}>
+            <Text style={[styles.headerText, {color: theme.colors.text}]}>
                The Prayer Chamber
             </Text>
           </View>
 
-          <View style={styles.MessageContainer}>
+          <View style={[styles.MessageContainer, {backgroundColor:theme.colors.quickBackground}]}>
 
             {submitted ? (
               <View style={styles.successContainer}>
@@ -102,9 +110,8 @@ export default function PrayerSection() {
 
 const styles = StyleSheet.create({
   Container:{
-  
     backgroundColor:'#F5F5F5',
-    justifyContent:'space-between',
+    
   },
 
   center:{
@@ -128,12 +135,13 @@ const styles = StyleSheet.create({
   },
 
   MessageContainer:{
+    height:'100%',
     backgroundColor:'#FFFFFF',
-    borderTopRightRadius:40,
-    borderTopLeftRadius:40,
+    borderTopRightRadius:50,
+    borderTopLeftRadius:50,
     padding:25,
     paddingBottom:30,
-    minHeight:320
+   
   },
 
   inputContainer:{
