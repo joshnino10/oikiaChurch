@@ -5,7 +5,7 @@ export const lightTheme = {
       text: '#000000',
       primary: '#F5F5F5',
       quickBackground: '#ffffff',
-      secondary: '#D3D3D3',
+      secondary: '#F5F5F5',
       card: '#f2f2f2',
     },
     fonts: {
