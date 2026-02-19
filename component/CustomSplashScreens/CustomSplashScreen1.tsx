@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, StatusBar } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import Animated, { FadeIn, FadeInLeft, FadeInRight } from "react-native-reanimated"; 
+import Animated, { FadeIn, FadeInLeft, FadeInRight, FadeOut, FadeOutRight, FadeOutUp } from "react-native-reanimated"; 
 
 export default function CustomSplashScreen1() {
   return (
@@ -19,7 +19,7 @@ export default function CustomSplashScreen1() {
       >
         {/* Logo */}
         <Animated.Image
-         entering={FadeIn.delay(1000).springify()}
+         entering={FadeIn.delay(800).springify()}
           source={require("../../assets/images/churchlogo.png")}
           style={styles.logo}
           resizeMode="contain"
@@ -27,9 +27,9 @@ export default function CustomSplashScreen1() {
 
         
         <Animated.View style={styles.headerContainer} entering={FadeIn}>
-          <Animated.Text entering={FadeInLeft.delay(700)} style={styles.title}>OIKIA</Animated.Text>
+          <Animated.Text entering={FadeInLeft.delay(700)} exiting={FadeOutUp} style={styles.title}>OIKIA</Animated.Text>
           <View style={{ marginLeft: 0 }}>
-            <Animated.Text entering={FadeInRight.delay(100)} style={styles.title2}>CHRISTIAN</Animated.Text>
+            <Animated.Text entering={FadeInRight.delay(100) }  style={styles.title2}>CHRISTIAN</Animated.Text>
             <Animated.Text entering={FadeInRight.delay(100)}  style={styles.title2}>CENTRE</Animated.Text>
           </View>
         </Animated.View>
