@@ -15,15 +15,21 @@ import {
 import { useTheme } from '../context/ThemeProvider'
 
 export default function PrayerSection() {
-  const {theme} = useTheme()
-
+  const { theme } = useTheme()
   const router = useRouter()
+
   const [prayerRequest, setPrayerRequest] = useState('')
   const [submitted, setSubmitted] = useState(false)
 
+  // ✅ Select logo based on theme and submission state
+  const logoSource = submitted
+    ? require('../../assets/images/action logo 2.png')
+    : theme.mode === 'dark'
+      ? require('../../assets/images/action logo 2.png')   // dark mode logo
+      : require('../../assets/images/action logo 1.png')  // light mode logo
+
   const handleSubmit = () => {
     if (!prayerRequest.trim()) return
-
     Keyboard.dismiss()
     setSubmitted(true)
 
@@ -38,36 +44,30 @@ export default function PrayerSection() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        
-        <View style={[styles.Container, {backgroundColor: theme.colors.secondary}]}>
+        <View style={[styles.Container, { backgroundColor: theme.colors.secondary }]}>
           
           <View style={styles.center}>
-            <Image 
+            <Image
               style={styles.logo}
-              source={
-                submitted?
-                require('../../assets/images/action logo 1.png'):
-                require('../../assets/images/action logo 2.png')
-              }
-              
-              
+              source={logoSource}  // use dynamic logo
             />
 
-            <Text style={[styles.headerText, {color: theme.colors.text}]}>
-               The Prayer Chamber
+            <Text style={[styles.headerText, { color: theme.colors.text }]}>
+              The Prayer Chamber
             </Text>
           </View>
 
-          <View style={[styles.MessageContainer, {backgroundColor:theme.colors.quickBackground}]}>
+          <View style={[styles.MessageContainer, { backgroundColor: theme.colors.quickBackground }]}>
 
             {submitted ? (
               <View style={styles.successContainer}>
-                 <Image style={{width:61, height:61}} source={require('../../assets/images/received small icon.png')}/>
-                <Text style={styles.successText}>
-                     Received!
-                </Text>
+                <Image
+                  style={{ width: 61, height: 61 }}
+                  source={require('../../assets/images/received small icon.png')}
+                />
+                <Text style={styles.successText}>Received!</Text>
                 <Text style={styles.successSubText}>
-                Your message has been lifted to the team
+                  Your message has been lifted to the team
                 </Text>
               </View>
             ) : (
@@ -93,16 +93,14 @@ export default function PrayerSection() {
                   disabled={!prayerRequest.trim()}
                 >
                   <Text style={styles.buttonText}>
-                  Send to Oikia Team
+                    Send to Oikia Team
                   </Text>
                 </TouchableOpacity>
               </>
             )}
 
           </View>
-
         </View>
-
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   )
@@ -111,7 +109,6 @@ export default function PrayerSection() {
 const styles = StyleSheet.create({
   Container:{
     backgroundColor:'#F5F5F5',
-    
   },
 
   center:{
@@ -141,7 +138,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius:50,
     padding:25,
     paddingBottom:30,
-   
   },
 
   inputContainer:{

@@ -15,15 +15,21 @@ import {
 import { useTheme } from '../context/ThemeProvider'
 
 export default function TestimoneySection() {
-   const {theme} = useTheme()
-
+  const { theme } = useTheme()
   const router = useRouter()
+
   const [testimoney, setTestiomoney] = useState('')
   const [submitted, setSubmitted] = useState(false)
 
+
+  const logoSource = submitted
+    ? require('../../assets/images/action logo 2.png')          
+    : theme.mode === 'dark'
+      ? require('../../assets/images/action logo 2.png')      
+      : require('../../assets/images/action logo 1.png')    
+
   const handleSubmit = () => {
     if (!testimoney.trim()) return
-
     Keyboard.dismiss()
     setSubmitted(true)
 
@@ -38,30 +44,30 @@ export default function TestimoneySection() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        
-        <View style={[styles.Container,{backgroundColor: theme.colors.secondary}]}>
-          
+        <View style={[styles.Container, { backgroundColor: theme.colors.secondary }]}>
+
           <View style={styles.center}>
-            <Image 
+            <Image
               style={styles.logo}
-              source={submitted? require('../../assets/images/action logo 1.png' ): require('../../assets/images/action logo 2.png')}
+              source={logoSource}   
             />
 
-            <Text style={[styles.headerText, {color: theme.colors.text}]}>
+            <Text style={[styles.headerText, { color: theme.colors.text }]}>
               Great is Thy Faithfulness
             </Text>
           </View>
 
-          <View style={[styles.MessageContainer, {backgroundColor: theme.colors.quickBackground}]}>
+          <View style={[styles.MessageContainer, { backgroundColor: theme.colors.quickBackground }]}>
 
             {submitted ? (
               <View style={styles.successContainer}>
-                 <Image style={{width:61, height:61}} source={require('../../assets/images/received small icon.png')}/>
-                <Text style={styles.successText}>
-                     Received!
-                </Text>
+                <Image
+                  style={{ width: 61, height: 61 }}
+                  source={require('../../assets/images/received small icon.png')}
+                />
+                <Text style={styles.successText}>Received!</Text>
                 <Text style={styles.successSubText}>
-                Your message has been lifted to the team
+                  Your message has been lifted to the team
                 </Text>
               </View>
             ) : (
@@ -87,16 +93,14 @@ export default function TestimoneySection() {
                   disabled={!testimoney.trim()}
                 >
                   <Text style={styles.buttonText}>
-                     Send to Oikia Team 
+                    Send to Oikia Team
                   </Text>
                 </TouchableOpacity>
               </>
             )}
 
           </View>
-
         </View>
-
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   )
@@ -104,9 +108,7 @@ export default function TestimoneySection() {
 
 const styles = StyleSheet.create({
   Container:{
-  
-    backgroundColor:'#F5F5F5',
-    justifyContent:'space-between',
+    flex: 1,                    // full height
   },
 
   center:{
@@ -124,14 +126,12 @@ const styles = StyleSheet.create({
     marginTop:20,
     fontSize:18,
     fontWeight:'600',
-    color:'#222',
     textAlign:'center',
     marginBottom:40,
   },
 
   MessageContainer:{
-    height:'100%',
-    backgroundColor:'#FFFFFF',
+    flex: 1,                     // use flex instead of height 100%
     borderTopRightRadius:50,
     borderTopLeftRadius:50,
     padding:25,
@@ -169,9 +169,9 @@ const styles = StyleSheet.create({
   },
 
   successContainer:{
+    flex:1,
     alignItems:'center',
     justifyContent:'center',
-    flex:1
   },
 
   successText:{
