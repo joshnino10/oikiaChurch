@@ -1,10 +1,13 @@
 import { ImageBackground, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { useTheme } from '../context/ThemeProvider'
 
 export default function GivingHeader() {
+  const {theme} = useTheme()
+
   return (
     <View style={styles.header}>
-      <Text style={styles.headerText}>Generosity</Text>
+      <Text style={[styles.headerText, {color: theme.colors.text}]}>Generosity</Text>
 
       <View style={styles.card}>
         <ImageBackground

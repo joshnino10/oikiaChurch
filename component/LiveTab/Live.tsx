@@ -1,8 +1,11 @@
 import React from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { activelivetab } from "./LiveTab";
-
+import { useTheme } from "../context/ThemeProvider";
 export default function Live() {
+
+  const  {theme} = useTheme()
+
   const handlePress = (item) => {
     console.log("Pressed:", item.PastorsName);
     // Add navigation or video play action here
@@ -21,15 +24,15 @@ export default function Live() {
             <Image style={styles.img} source={item.image} />
 
             <View style={styles.textContainer}>
-              <Text style={styles.labelDate}>
-                Up Next: <Text style={styles.date}>{item.date}</Text>
+              <Text style={[styles.labelDate,{color:theme.colors.text}]}>
+                Up Next: <Text style={[styles.date, {color: theme.colors.text}]}>{item.date}</Text>
               </Text>
 
-              <Text style={styles.semiTitle} numberOfLines={2}>
+              <Text style={[styles.semiTitle, {color: theme.colors.text}]} numberOfLines={2}>
                 Midweek Service with {item.PastorsName}
               </Text>
 
-              <Text style={styles.time}>Time {item.Time}</Text>
+              <Text style={[styles.time,{color: theme.colors.text}]}>Time {item.Time}</Text>
             </View>
           </View>
 

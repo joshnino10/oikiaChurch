@@ -2,8 +2,12 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useTheme } from "../context/ThemeProvider";
 
 export default function PaymentMethod() {
+  const {theme} = useTheme()
+
+
   const router = useRouter();
   const [selectedId, setSelectedId] = useState(null);
 
@@ -40,7 +44,7 @@ export default function PaymentMethod() {
           <TouchableOpacity
             key={item.id}
             activeOpacity={0.7}
-            style={[styles.card, isSelected && styles.activeCard]}
+            style={[styles.card, isSelected && styles.activeCard, ]}
             onPress={() => setSelectedId(item.id)}
           >
             <View style={styles.row}>
@@ -78,7 +82,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
     paddingTop: 30,
-    backgroundColor: "#fff",
+   
   },
 
   card: {

@@ -3,17 +3,33 @@ import QuickAction from "@/component/HomePage/QuickAction";
 import TodayManner from "@/component/HomePage/TodayManner";
 import UpcomingService from "@/component/HomePage/UpcomingService";
 import React from "react";
+import { useTheme } from "@/component/context/ThemeProvider";
 import { ScrollView, StatusBar, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home() {
+  const { theme } = useTheme();
+  const isDarkMode = theme.mode === "dark";
+
   return (
-    <SafeAreaView style={styles.safeArea} edges={["top"]}>
-      <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
+    <SafeAreaView
+      edges={["top"]}
+      style={[
+        styles.safeArea,
+        { backgroundColor: theme.colors.background },
+      ]}
+    >
+      <StatusBar
+        barStyle={isDarkMode ? "light-content" : "darkt-content"}
+        backgroundColor={theme.colors.background}
+      />
 
       <ScrollView
-        contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={[
+          styles.scrollContent,
+          { backgroundColor: theme.colors.background },
+        ]}
       >
         <View style={styles.container}>
           <Header />
@@ -25,17 +41,15 @@ export default function Home() {
     </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#ffffff",
   },
   scrollContent: {
     flexGrow: 1,
     paddingBottom: 40,
   },
   container: {
-    // paddingHorizontal: 16,
+    flex: 1,
   },
 });

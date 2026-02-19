@@ -2,8 +2,10 @@ import { Platform, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import MissionCategories from "./MissionCategories";
 import PaymentMethod from "./PaymentMethod";
+import { useTheme } from "../context/ThemeProvider"; 
 
 export default function GenerousGiving() {
+  const {theme} = useTheme()
   const [amount, setAmount] = useState("");
 
  
@@ -23,7 +25,7 @@ export default function GenerousGiving() {
 
   return (
     <View style={styles.page}>
-      <Text style={styles.label}>Enter Custom Amount</Text>
+      <Text style={[styles.label, {color: theme.colors.text}]}>Enter Custom Amount</Text>
 
       <View style={styles.inputWrapper}>
         <TextInput

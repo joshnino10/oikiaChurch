@@ -1,5 +1,6 @@
 import Feather from "@expo/vector-icons/Feather";
 import React, { useState } from "react";
+import { useTheme } from "../context/ThemeProvider";
 import {
   Platform,
   StyleSheet,
@@ -10,13 +11,14 @@ import {
 } from "react-native";
 
 export default function NoteDetails() {
+  const {theme} = useTheme()
   const [search, setSearch] = useState("");
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {backgroundColor:theme.colors.background } ]}>
       <View style={styles.page}>
         <View style={styles.row}>
-          <Text style={styles.word}>The Word</Text>
+          <Text style={[styles.word, {color: theme.colors.text}]}>The Word</Text>
 
           <View style={styles.searchBox}>
 
@@ -37,8 +39,7 @@ export default function NoteDetails() {
 
 const styles = StyleSheet.create({
   container: {
-   
-    backgroundColor: "#FFFFFF",
+  
   },
 
   page: {

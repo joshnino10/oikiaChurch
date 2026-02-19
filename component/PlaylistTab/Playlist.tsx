@@ -6,8 +6,10 @@ import {
   View,
   ImageBackground,
 } from 'react-native'
+import { useTheme } from '../context/ThemeProvider' 
 
 export default function Playlist() {
+  const {theme} = useTheme()
 
   const collections = [
     {
@@ -51,8 +53,8 @@ export default function Playlist() {
           </ImageBackground>
 
           <View style={styles.textContainer}>
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.subtitle}>{item.subtitle}</Text>
+            <Text style={[styles.title, {color: theme.colors.text}]}>{item.title}</Text>
+            <Text style={[styles.subtitle, {color: theme.colors.text}]}>{item.subtitle}</Text>
           </View>
         </Pressable>
       ))}

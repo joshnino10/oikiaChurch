@@ -1,8 +1,9 @@
 import React from 'react'
 import { FlatList, StyleSheet, Text, View, Image } from 'react-native'
-
+import { useTheme } from '../context/ThemeProvider'
 export default function UpcomingService() {
 
+  const {theme} = useTheme()
   const service = [
     {
       id: '1',
@@ -31,7 +32,7 @@ export default function UpcomingService() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>Upcoming Service</Text>
+      <Text style={[styles.headerText, {color: theme.colors.text}]}>Upcoming Service</Text>
 
       <FlatList
         data={service}

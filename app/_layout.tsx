@@ -11,7 +11,7 @@ import {
   useFonts
 } from "@expo-google-fonts/poppins";
 
-import { 
+import {
   NotoSerif_400Regular,
   NotoSerif_700Bold,
 } from '@expo-google-fonts/noto-serif';
@@ -21,6 +21,7 @@ import {
 } from '@expo-google-fonts/montserrat-alternates';
 
 
+import { ThemeProvider } from "@/component/context/ThemeProvider";
 import { Stack } from "expo-router";
 
 import CustomSplashScreen1 from "@/component/CustomSplashScreens/CustomSplashScreen1";
@@ -81,10 +82,11 @@ export default function RootLayout() {
 
   // Show main app
   return (
-   
+   <ThemeProvider>
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />
     </Stack>
+    </ThemeProvider>
    
   );
 }

@@ -1,7 +1,9 @@
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import React, { useState } from "react";
+import { useTheme } from "../context/ThemeProvider"; 
 
 export default function MissionCategories() {
+  const {theme} = useTheme()
   const [selectedId, setSelectedId] = useState(null);
 
   const categories = [
@@ -13,7 +15,7 @@ export default function MissionCategories() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Mission Category</Text>
+      <Text style={[styles.header, {color:theme.colors.text}]}>Mission Category</Text>
 
       <View style={styles.list}>
         {categories.map((item) => {

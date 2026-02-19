@@ -4,10 +4,12 @@ import Live from '../LiveTab/Live'
 import Lovedtabar from '../LovedTab/Lovedtabar'
 import Playlist from '../PlaylistTab/Playlist'
 import Sermons from '../SermonsTab/Sermons'
+import { useTheme } from '../context/ThemeProvider' 
 
 
 
 export default function ActiveTab() {
+  const {theme} = useTheme()
   const [activeTab, setActiveTab] = useState('Live')
 
   const tabs = [
@@ -30,13 +32,14 @@ export default function ActiveTab() {
               style={[
                 styles.tabText,
                 activeTab === item.label && styles.activeTabText,
+                {color: theme.colors.text}
               ]}
             >
               {item.label}
             </Text>
 
             {activeTab === item.label && (
-              <View style={styles.underline} />
+              <View style={[styles.underline,{backgroundColor: theme.colors.text}]} />
             )}
           </Pressable>
         ))}

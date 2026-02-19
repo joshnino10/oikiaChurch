@@ -1,8 +1,9 @@
 import { useRouter } from 'expo-router'
 import React from 'react'
 import { FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native'
-
+import { useTheme } from '../context/ThemeProvider'
 export default function QuickAction() {
+  const {theme} = useTheme()
   const router = useRouter()
 
   const quickAction = [
@@ -34,7 +35,7 @@ export default function QuickAction() {
       <Image source={item.logo} style={styles.logo} />
 
       <View>
-        <Text style={[styles.title, { color: item.color }]}>
+        <Text style={[styles.title, {color: item.color}]}>
           {item.title}
         </Text>
         <Text style={[styles.subTitle, { color: item.color }]}>
@@ -46,7 +47,7 @@ export default function QuickAction() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headertext}>Quick Action</Text>
+      <Text style={[styles.headertext, {color: theme.colors.text}]}>Quick Action</Text>
 
       <FlatList
         data={quickAction}
