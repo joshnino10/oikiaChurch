@@ -1,6 +1,6 @@
 import GivingPageDetails from '@/component/GivingPage/GivingPageDetails'
 import React from 'react'
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text,} from 'react-native'
 
 export default function GivingPage() {
   return (

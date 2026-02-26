@@ -17,7 +17,7 @@ export default function CustomSplashScreen1() {
         end={{ x: 1, y: 1 }}
         style={styles.background}
       >
-        {/* Logo */}
+      
         <Animated.Image
          entering={FadeIn.delay(800).springify()}
           source={require("../../assets/images/churchlogo.png")}
