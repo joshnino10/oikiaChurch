@@ -13,10 +13,10 @@ export default function GivingPageDetails() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.colors.background}]}>
         <Image style={styles.icon} source={require('../../assets/images/big successful icon.png')}/>
-      <Text style={styles.centerTextTitle}>God Bless You!</Text>
-      <Text style={styles.messageText}>
+      <Text style={[styles.centerTextTitle, {color:theme.colors.text}]}>God Bless You!</Text>
+      <Text style={[styles.messageText, {color:theme.colors.text}]}>
         Your generous giving has been received with gratitude. Together we are
         building the kingdom.
       </Text>

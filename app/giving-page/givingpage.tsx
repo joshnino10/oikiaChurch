@@ -1,11 +1,15 @@
 import GivingPageDetails from '@/component/GivingPage/GivingPageDetails'
 import React from 'react'
-import { SafeAreaView, StyleSheet, Text,} from 'react-native'
+import { SafeAreaView, StyleSheet, Text, } from 'react-native'
+import { useTheme } from '@/component/context/ThemeProvider'
+
 
 export default function GivingPage() {
+  const {theme} = useTheme()
+
   return (
-    <SafeAreaView style={styles.SafeArea}>
-        <Text style={styles.headertext}>Generosity</Text>
+    <SafeAreaView style={[styles.SafeArea, {backgroundColor:theme.colors.background}]}>
+        <Text style={[styles.headertext, {color:theme.colors.text}]}>Generosity</Text>
       <GivingPageDetails/>
     </SafeAreaView>
   )
