@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
   successContainer:{
     alignItems:'center',
     justifyContent:'center',
-    flex:1
+    marginTop:120
   },
 
   successText:{
