@@ -4,7 +4,7 @@ import { SafeAreaView, StyleSheet, Text, } from 'react-native'
 import { useTheme } from '@/component/context/ThemeProvider'
 
 
-export default function GivingPage() {
+export default function GivingPage(){
   const {theme} = useTheme()
 
   return (
