@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet } from 'react-native';
+import { Platform, SafeAreaView, ScrollView, StatusBar, StyleSheet } from 'react-native';
 import React from 'react';
 import ProfileHeader from '@/component/ProfileDetails.tsx/ProfileHeader';
 import Sanctuary from '@/component/ProfileDetails.tsx/Sanctuary';
@@ -28,5 +28,6 @@ export default function Profile() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
+    paddingTop:Platform.OS === 'android'? 50:0
   },
 });

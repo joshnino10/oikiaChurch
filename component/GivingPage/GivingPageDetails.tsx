@@ -1,22 +1,28 @@
 import { useRouter } from "expo-router";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { useTheme } from '../context/ThemeProvider'
+import { useTheme } from "../context/ThemeProvider";
 
 export default function GivingPageDetails() {
-   const {theme} = useTheme()
-    const router = useRouter()
+  const { theme } = useTheme();
+  const router = useRouter();
 
   const handlePress = () => {
-    router.replace('/(tabs)/giving')
-      
+    router.replace("/(tabs)/giving");
   };
 
   return (
-    <View style={[styles.container, {backgroundColor: theme.colors.background}]}>
-        <Image style={styles.icon} source={require('../../assets/images/big successful icon.png')}/>
-      <Text style={[styles.centerTextTitle, {color:theme.colors.text}]}>God Bless You!</Text>
-      <Text style={[styles.messageText, {color:theme.colors.text}]}>
+    <View
+      style={[styles.container, { backgroundColor: theme.colors.background }]}
+    >
+      <Image
+        style={styles.icon}
+        source={require("../../assets/images/big successful icon.png")}
+      />
+      <Text style={[styles.centerTextTitle, { color: theme.colors.text }]}>
+        God Bless You!
+      </Text>
+      <Text style={[styles.messageText, { color: theme.colors.text }]}>
         Your generous giving has been received with gratitude. Together we are
         building the kingdom.
       </Text>
@@ -33,38 +39,43 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 20, 
+    paddingHorizontal: 20,
     paddingVertical: 20,
   },
-  icon:{
-    width:139,
-    height:139,
-    marginBottom:10
+
+  icon: {
+    width: 139,
+    height: 139,
+    marginBottom: 10,
   },
+
   centerTextTitle: {
-    fontFamily: 'PoppinsSemiBold',
+    fontFamily: "PoppinsSemiBold",
     fontSize: 32,
     fontWeight: "600",
     marginBottom: 15,
     textAlign: "center",
   },
+  
   messageText: {
-    fontFamily: 'PoppinsMedium',
-    fontWeight: '500',
+    fontFamily: "PoppinsMedium",
+    fontWeight: "500",
     fontSize: 16,
     textAlign: "center",
     marginBottom: 30,
   },
+
   button: {
     backgroundColor: "#8C4616",
     paddingVertical: 12,
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
-    alignSelf: "stretch", 
+    alignSelf: "stretch",
   },
+
   buttonText: {
-    fontFamily: 'PoppinsSemiBold',
+    fontFamily: "PoppinsSemiBold",
     color: "#FFFFFF",
     fontSize: 16,
     fontWeight: "600",

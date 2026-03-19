@@ -10,6 +10,7 @@ import {
   StatusBar,
   SafeAreaView,
   useWindowDimensions,
+  ScrollView,
 } from 'react-native';
 
 export default function OnboardingScreen() {
@@ -65,27 +66,18 @@ export default function OnboardingScreen() {
 
   const goNext = () => {
     if (currentIndex < Slides.length - 1) {
-      flatListRef.current.scrollToIndex({
-        index: currentIndex + 1,
-        animated: true,
-      });
+      flatListRef.current.scrollToIndex({ index: currentIndex + 1, animated: true });
     }
   };
 
   const goBack = () => {
     if (currentIndex > 0) {
-      flatListRef.current.scrollToIndex({
-        index: currentIndex - 1,
-        animated: true,
-      });
+      flatListRef.current.scrollToIndex({ index: currentIndex - 1, animated: true });
     }
   };
 
   const skip = () => {
-    flatListRef.current.scrollToIndex({
-      index: Slides.length - 1,
-      animated: true,
-    });
+    flatListRef.current.scrollToIndex({ index: Slides.length - 1, animated: true });
   };
 
   const handleGetStarted = () => {
@@ -94,34 +86,22 @@ export default function OnboardingScreen() {
 
   const renderItem = useCallback(
     ({ item }) => (
-      <View style={[styles.slideContainer, { width }]}>
-        <View
-          style={[
-            styles.imageContainer,
-            { height: height * 0.45 },
-          ]}
-        >
+      <ScrollView
+        contentContainerStyle={[styles.slideContainer, { width }]}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={[styles.imageContainer, { height: height * 0.45 }]}>
           <Image source={item.image} style={styles.image} />
         </View>
 
-        <Text
-          style={[
-            styles.slideTitle,
-            { fontSize: height < 700 ? 22 : 25 },
-          ]}
-        >
+        <Text style={[styles.slideTitle, { fontSize: height < 700 ? 22 : 25 }]}>
           {item.title}
         </Text>
 
-        <Text
-          style={[
-            styles.slideSubtitle,
-            { fontSize: height < 700 ? 14 : 16 },
-          ]}
-        >
+        <Text style={[styles.slideSubtitle, { fontSize: height < 700 ? 14 : 16 }]}>
           {item.subtitle}
         </Text>
-      </View>
+      </ScrollView>
     ),
     [width, height]
   );
@@ -156,13 +136,7 @@ export default function OnboardingScreen() {
 
         <View style={styles.dotsContainer}>
           {Slides.map((_, index) => (
-            <View
-              key={index}
-              style={[
-                styles.dot,
-                currentIndex === index && styles.activeDot,
-              ]}
-            />
+            <View key={index} style={[styles.dot, currentIndex === index && styles.activeDot]} />
           ))}
         </View>
       </View>
@@ -180,21 +154,11 @@ export default function OnboardingScreen() {
         )}
 
         {currentIndex < Slides.length - 1 ? (
-          <TouchableOpacity
-            style={styles.nextBtn}
-            onPress={goNext}
-            accessibilityLabel="Next slide"
-          >
-            <Image
-              source={require('../../assets/images/nexticon.png')}
-              style={styles.nextIcon}
-            />
+          <TouchableOpacity style={styles.nextBtn} onPress={goNext}>
+            <Image source={require('../../assets/images/nexticon.png')} style={styles.nextIcon} />
           </TouchableOpacity>
         ) : (
-          <TouchableOpacity
-            style={styles.getStartedBtn}
-            onPress={handleGetStarted}
-          >
+          <TouchableOpacity style={styles.getStartedBtn} onPress={handleGetStarted}>
             <Text style={styles.getStartedText}>Get Started</Text>
           </TouchableOpacity>
         )}
@@ -237,9 +201,11 @@ const styles = StyleSheet.create({
 
   /* SLIDES */
   slideContainer: {
-    flex: 1,
+    flexGrow: 1,
     alignItems: 'center',
+    justifyContent: 'flex-start',
     paddingHorizontal: 20,
+    paddingBottom: 30,
   },
 
   imageContainer: {
@@ -252,6 +218,7 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
+    resizeMode: 'contain',
   },
 
   slideTitle: {

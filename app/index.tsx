@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet,} from 'react-native'
+import { Platform, SafeAreaView, StyleSheet,} from 'react-native'
 import React from 'react'
 import OnboardingScreen from '@/component/OnboardingScreen/OnboardingScreen'
 
@@ -14,7 +14,8 @@ export default function index() {
 const styles = StyleSheet.create({
   Safearea:{
     flex:1,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    paddingTop: Platform.OS === 'android'? 20:0
   },
 
 })

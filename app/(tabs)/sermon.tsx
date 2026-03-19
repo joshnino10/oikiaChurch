@@ -1,8 +1,9 @@
 import ActiveTab from '@/component/SermonPage/ActiveTab';
 import Sermonheader from '@/component/SermonPage/Sermonheader';
 import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet, ScrollView, Platform } from 'react-native';
 import { useTheme } from "@/component/context/ThemeProvider";
+
 
 export default function Sermon() {
   const { theme } = useTheme();
@@ -14,8 +15,10 @@ export default function Sermon() {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={theme.colors.background}
       />
+      <ScrollView>
       <Sermonheader />
       <ActiveTab />
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -23,5 +26,7 @@ export default function Sermon() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
+     paddingTop:Platform.OS === 'android'? 10:0
+
   },
 });

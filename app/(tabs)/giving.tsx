@@ -1,7 +1,7 @@
 import GenerousGiving from '@/component/GivingPage/GenerousGiving';
 import GivingHeader from '@/component/GivingPage/GivingHeader';
 import React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, StatusBar } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, StatusBar, Platform } from 'react-native';
 import { useTheme } from '@/component/context/ThemeProvider';
 
 export default function Giving() {
@@ -28,5 +28,6 @@ export default function Giving() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
+    paddingTop:Platform.OS === 'android'? 50:0
   },
 });

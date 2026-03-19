@@ -20,7 +20,7 @@ export default function Home() {
       ]}
     >
       <StatusBar
-        barStyle = {isDarkMode ? "light-content" : "darkt-content"}
+        barStyle = {isDarkMode ? "light-content" : "dark-content"}
         backgroundColor={theme.colors.background}
       />
 

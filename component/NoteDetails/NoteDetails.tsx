@@ -30,7 +30,7 @@ export default function NoteDetails() {
               placeholderTextColor="#A9A9A9"
               style={styles.input}
             />
-            <Feather   style={styles.searchIcon} name="search" size={18} color="#A9A9A9" />
+            <Feather style={styles.searchIcon} name="search" size={18} color="#A9A9A9" />
           </View>
         </View>
 
